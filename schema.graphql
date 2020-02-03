@@ -1,0 +1,52 @@
+# TYPE SYSTEM
+# Int, Float, String, Boolean, ID
+type Pizza{
+    id: Int!
+    name: String!
+    origin: String
+    ingredients: [Ingredient] # creado el 14-01-2020
+}
+
+# ININCIO CREADO EL 14-01-2020
+type Ingredient{
+    id: Int!
+    name: String!
+    calories: String
+}
+
+# FIN CREADO EL 14-01-2020
+
+# INICIO CREADO EL 20-01-2020
+input PizzaInput{
+    name: String!
+    origin: String
+    ingredientIds: [Int]  #estoy enviando arreglo de enteros, en este caso el id
+}
+
+input UpdatePizzaInput{
+    id: Int!
+    name: String!
+    origin: String
+    ingredientIds: [Int]
+
+}
+
+# Mutation
+type Mutation{
+    createPizza (pizza: PizzaInput): Pizza
+    updatePizza (pizza: UpdatePizzaInput): Pizza
+    deletePizza (id:Int): Pizza
+}
+
+# FIN CREADO EL 20-01-2020
+
+# Definir el Schema
+
+type Query{
+    pizzas (name: String): [Pizza]
+    pizzaId (id: Int): [Pizza]
+}
+
+
+
+
